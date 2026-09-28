@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Image Studio</title><link rel="stylesheet" href="studio.css"></head>
+<body>
+  <header class="app-header">
+    <div class="brand"><img src="assets/app_icon_transparent.png" alt=""><strong>Image Studio</strong></div>
+    <nav aria-label="模块切换" role="tablist"><button id="tab-preprocess" role="tab" aria-selected="true" aria-controls="preprocess" class="tab active">数据预处理</button><button id="tab-roi" role="tab" aria-selected="false" aria-controls="roi" class="tab">结果图排版</button></nav>
+    <label class="theme-control" for="theme-select">主题 <select id="theme-select" disabled><option value="dark">深色</option><option value="light">浅色</option><option value="system">跟随系统</option></select></label>
+  </header>
+  <main id="preprocess" role="tabpanel" class="workspace">
+    <aside class="settings panel">
+      <form id="process-form">
+        <fieldset id="config-fields">
+          <section class="settings-section"><h2>输入文件</h2>
+            <label for="object-path">物体 EVI</label><div class="file-row"><input id="object-path" name="object" placeholder="选择物体 EVI 文件"><button type="button" data-browse="object" title="选择物体文件"><img src="assets/icons/folder2-open.svg" alt="">浏览</button></div>
+            <label for="air-path">空气 EVI</label><div class="file-row"><input id="air-path" name="air" placeholder="选择空气 EVI 文件"><button type="button" data-browse="air" title="选择空气文件"><img src="assets/icons/folder2-open.svg" alt="">浏览</button></div>
+            <label for="mask-path">坏点 mask</label><div class="file-row"><input id="mask-path" name="mask"><button type="button" data-browse="mask" title="选择坏点 mask"><img src="assets/icons/folder2-open.svg" alt="">浏览</button></div>
+          </section>
+          <section class="settings-section"><h2>处理模式</h2>
+            <div class="radio-row"><label><input type="radio" name="mode" value="volume" checked>三维体层</label><label><input type="radio" name="mode" value="mean">单张平均</label></div>
+            <div class="process-note"><span>处理流程</span><ol><li>删除首帧图像</li><li>裁剪顶部、底部各 2 行</li><li>按 mask 插值修复坏点</li><li>空气始终平均，物体按模式处理</li><li>计算 postlog：−ln(物体 / 空气)</li></ol></div>
+          </section>
+          <section class="settings-section output-section"><h2>输出设置</h2>
+            <label for="output-path">输出目录</label><div class="file-row"><input id="output-path" name="output"><button type="button" data-browse="output"><img src="assets/icons/folder2-open.svg" alt="">浏览</button></div>
+            <label class="check-row"><input type="checkbox" id="export-raw">同时输出 RAW<span>默认仅 TIFF</span></label>
+          </section>
+        </fieldset>
+        <div class="run-actions"><button type="submit" id="start" class="primary"><img src="assets/icons/play-fill.svg" alt="">开始处理</button><button type="button" id="cancel" hidden>取消处理</button></div>
+      </form>
+    </aside>
+    <section class="preview panel">
+      <div class="preview-heading"><h2>图像预览</h2><select id="preview-source" aria-label="预览数据"><option value="object">物体输入</option><option value="air">空气输入</option></select></div>
+      <div class="preview-tools"><button id="pan-tool" class="selected"><img src="assets/icons/hand-index.svg" alt="">拖动</button><button id="zoom-in"><img src="assets/icons/zoom-in.svg" alt="">放大</button><button id="zoom-out"><img src="assets/icons/zoom-out.svg" alt="">缩小</button><span class="divider"></span><button id="fit"><img src="assets/icons/arrows-fullscreen.svg" alt="">适合窗口</button><button id="actual">1:1 实际大小</button><span id="zoom-label"></span></div>
+      <div id="preview-body">
+        <div id="empty-preview"><img src="assets/icons/image.svg" alt=""><h3>选择图像，开始预览</h3><p>导入物体或空气 EVI 后，可查看切片与局部细节。</p><button id="empty-browse">选择物体文件</button></div>
+        <div id="image-workspace" hidden><div class="image-meta"><span id="image-name"></span><span id="image-size"></span></div><canvas id="overview" aria-label="完整图像，点击移动预览区域"></canvas><div class="detail-heading"><span>局部预览</span><span id="crop-size"></span></div><canvas id="detail" aria-label="图像局部预览，可拖动"></canvas></div>
+      </div>
+      <div class="preview-footer"><div class="frame-control"><label for="frame">图像帧</label><input type="range" id="frame" min="1" max="1" value="1" disabled><output id="frame-label">— / —</output></div><div class="window-controls"><span>显示范围</span><input id="window-low" type="number" step="any" aria-label="显示下限" placeholder="下限"><span>–</span><input id="window-high" type="number" step="any" aria-label="显示上限" placeholder="上限"><button id="auto-window">自动</button></div></div>
+    </section>
+  </main>
+  <section id="roi" role="tabpanel" hidden><iframe id="roi-frame" src="roi/index.html" title="ROI 结果图排版"></iframe></section>
+  <footer id="preprocess-statusbar" class="statusbar"><span class="local-indicator"><img src="assets/icons/display.svg" alt="">本机处理</span><progress id="job-progress" max="100" value="0" hidden></progress><span id="status" role="status">准备就绪</span><button id="open-result" hidden>打开结果目录</button></footer>
+  <div id="toast" role="alert" hidden></div>
+  <link rel="stylesheet" href="themes.css">
+  <script src="theme.js"></script>
+  <script src="studio.js"></script>
+</body></html>

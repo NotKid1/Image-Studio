@@ -1,0 +1,22 @@
+/* Shell-only presentation overrides. Canvas pixels and export settings are untouched. */
+:root[data-theme=light]{color-scheme:light;--bg:#eef2f7;--panel:#fff;--panel-2:#f1f5f9;--line:#cbd5e1;--text:#17283d;--muted:#52647b;--accent:#246bd5;--accent-hover:#195bbd}
+[data-theme=light] button{color:var(--text);background:#f1f5f9;border-color:var(--line)}
+[data-theme=light] button:hover{background:#e3ebf5;border-color:#8ba4c4}
+[data-theme=light] .primary{background:var(--accent);color:#fff;border-color:var(--accent)}
+[data-theme=light] .primary:hover{background:var(--accent-hover)}
+[data-theme=light] .topbar,[data-theme=light] .stage-tools,[data-theme=light] .statusbar{background:#f8fafc;color:var(--muted)}
+[data-theme=light] .brand-cn,[data-theme=light] label,[data-theme=light] .window-target{color:var(--muted)}
+[data-theme=light] label output,[data-theme=light] .project-name input,[data-theme=light] .window-target strong,[data-theme=light] .volume-item .name,[data-theme=light] .empty-state{color:var(--text)}
+[data-theme=light] input[type=number],[data-theme=light] input[type=text],[data-theme=light] input[type=color],[data-theme=light] textarea,[data-theme=light] .volume-item{background:#fff;border-color:var(--line);color:var(--text)}
+[data-theme=light] .selected-info{background:#f1f5fa}
+[data-theme=light] .add-btn{color:#275c9c}
+[data-theme=light] .text-btn{color:var(--accent);background:transparent}
+[data-theme=light] .danger-soft{color:#b12e35}
+[data-theme=light] .volume-badge{color:#275c9c;border-color:#9eb8df}
+[data-theme=light] .volume-item .shape,[data-theme=light] .volume-actions button{color:var(--muted)}
+[data-theme=light] .stage-area{background:#e7edf5}
+[data-theme=light] .tool.active{background:#dbeafe;color:#1d57a3;border-color:#9cbce8}
+[data-theme=light] .canvas-wrap{background-color:#f4f6f9;background-image:linear-gradient(45deg,#e1e7ef 25%,transparent 25%),linear-gradient(-45deg,#e1e7ef 25%,transparent 25%),linear-gradient(45deg,transparent 75%,#e1e7ef 75%),linear-gradient(-45deg,transparent 75%,#e1e7ef 75%)}
+[data-theme=light] .save-status{color:#287341}
+[data-theme=light] .empty-state{background:#fffffff2;border:1px solid var(--line);border-radius:8px;padding:20px;box-shadow:0 5px 24px #20304022}
+[data-theme=light] .toast{background:#fff;color:var(--text);border-color:#9eb3cd;box-shadow:0 4px 18px #20304022}

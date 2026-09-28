@@ -1,0 +1,35 @@
+/* Unified ROI workspace; processing and canvas rendering remain in the original app. */
+[hidden]{display:none!important}
+.topbar{height:58px;padding:0 16px;gap:12px;background:var(--bg)}
+.topbar .tool{height:34px;padding:0 14px}.toolbar{gap:8px}
+.workspace{grid-template-columns:260px minmax(420px,1fr) 270px}
+.project-name{display:flex;flex-direction:column;align-items:stretch;gap:10px;min-width:0;padding:17px 15px;border-bottom:1px solid var(--line);color:var(--text);font-weight:600}
+.project-name input{width:100%;font-weight:400;border:1px solid var(--line);background:var(--bg);padding:7px 8px;border-radius:5px}
+.settings-group{border-bottom:1px solid var(--line)}
+.settings-group summary{list-style:none;cursor:pointer;padding:16px 15px;font-weight:600;display:flex;justify-content:space-between;align-items:center}
+.settings-group summary::after{content:'⌄';color:var(--muted)}
+.settings-group[open] summary::after{content:'⌃'}
+.settings-group summary:focus-visible{outline:2px solid var(--accent);outline-offset:-3px}
+.group-body{padding:0 15px 16px}.group-body>section{padding:12px 0;border:0}
+.group-body>.wide:first-child{margin-top:0}
+.group-body .selected-info{background:transparent;border-top:1px solid var(--line);margin-top:14px;padding-bottom:0}
+.selected-info .section-head{display:none}.selected-info #selectionText{color:var(--muted);font-size:12px}
+.group-body .two-button-row{grid-template-columns:1fr}.group-body .slice-label{margin-top:0}
+.group-body .hint{line-height:1.65}.volume-list{margin:14px 0 0}
+.stage-tools{min-height:38px;height:auto;gap:12px;padding:8px 14px;flex-wrap:wrap;background:var(--bg)}
+#studio-selection{color:var(--muted);font-size:12px}.tool-tip{margin-left:auto;font-size:11px;max-width:55%;text-align:right}
+.canvas-wrap{margin:12px}.statusbar{gap:16px}
+.property-tabs{display:flex;position:sticky;top:0;background:var(--panel);z-index:2;border-bottom:1px solid var(--line)}
+.property-tabs button{flex:1;height:48px;border:0;border-radius:0;background:transparent;color:var(--muted);border-bottom:3px solid transparent}
+.property-tabs button[aria-selected=true]{color:var(--accent);border-bottom-color:var(--accent);font-weight:650}
+.right-panel section{padding:18px 16px}.right-panel .hint{line-height:1.7;margin-bottom:13px}
+.right-panel .control-row{min-height:40px}.right-panel label>input[type=range]{margin:12px 0}
+.studio-empty:not(.studio-example) #figureCanvas{visibility:hidden;pointer-events:none}
+.studio-empty .window-target{display:none}
+.empty-state{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:28px;gap:13px;width:320px;max-width:90%;box-shadow:0 8px 24px #0003}
+.empty-state .empty-icon{display:none}.empty-state button{width:100%;min-height:34px;margin-top:0}
+.studio-example .empty-state{display:none}
+.preview-mode .topbar>.tool-group{display:none}.preview-mode .stage-tools{display:none}
+[data-theme=light] .property-tabs button{background:transparent;color:var(--muted)}
+[data-theme=light] .property-tabs button[aria-selected=true]{color:var(--accent)}
+@media(max-width:1180px){.workspace{grid-template-columns:225px minmax(380px,1fr) 240px}.topbar{padding:0 10px}.topbar .tool{padding:0 10px}.tool-tip{display:none}.group-body{padding-left:12px;padding-right:12px}}

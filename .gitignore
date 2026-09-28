@@ -1,19 +1,31 @@
-# Generated distribution archives
-*.zip
-
-# Local data and exports
-*.tif
-*.tiff
-*.dcm
-*.nii
-*.nii.gz
-exports/
-data/
-
-# Local tooling
-node_modules/
+# Local environments, builds and generated data
+.build_env/
+.venv/
+__pycache__/
+*.py[cod]
+build/
+dist/
+output/
+qa/
+*.spec
+*.lnk
+*.log
 .env
 .env.*
-!.env.example
-.DS_Store
-Thumbs.db
+
+# Earlier staging copies; active sources live at root and in web/
+/core/
+/roi/
+/assets/
+/tests/
+/design-qa.md
+/qa_statusbar_check.py
+/qa_theme_check.py
+
+# Experimental image data (the default calibration mask is intentional)
+*.evi
+*.EVI
+*.tif
+*.tiff
+*.raw
+!maskplus.raw
